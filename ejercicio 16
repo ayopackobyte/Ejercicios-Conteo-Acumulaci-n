@@ -9,30 +9,50 @@ class Ejercicio16
 {
     static void Main()
     {
-        // Variable para acumular la suma de los números negativos
-        double sumaNegativos = 0;
+        double[] numeros = new double[10];  // Arreglo para guardar los 10 números ingresados
+        double[] negativos = new double[10]; // Arreglo para almacenar solo los negativos
+        int cantidadNegativos = 0;           // Cuenta cuántos negativos encontramos
+        double sumaNegativos = 0;            // Suma acumulada de los negativos
         double numero;
 
-        Console.WriteLine("=== Suma de números negativos ===");
+        Console.WriteLine("=== Almacenar y acumular números negativos ===");
 
-        // Leemos 10 números uno por uno
-        for (int i = 1; i <= 10; i++)
+        // Paso 1: Leer los 10 números y guardarlos
+        for (int i = 0; i < 10; i++)
         {
-            // Pedimos el número y lo validamos
-            Console.Write($"Ingresa el número {i}: ");
+            Console.Write($"Ingresa el número {i + 1}: ");
             while (!double.TryParse(Console.ReadLine(), out numero))
             {
                 Console.Write("Dato inválido. Ingresa un número: ");
             }
 
-            // Si el número es negativo, lo sumamos al acumulador
-            if (numero < 0)
+            numeros[i] = numero; // Guardamos el número en el arreglo principal
+        }
+
+        // Paso 2: Recorrer el arreglo y extraer los negativos
+        for (int i = 0; i < 10; i++)
+        {
+            if (numeros[i] < 0)
             {
-                sumaNegativos += numero;
+                negativos[cantidadNegativos] = numeros[i]; // Lo guardamos en el arreglo de negativos
+                sumaNegativos += numeros[i];               // Lo sumamos al acumulador
+                cantidadNegativos++;
             }
         }
 
-        // Mostramos el resultado
-        Console.WriteLine($"\nLa suma de los números negativos es: {sumaNegativos}");
+        // Paso 3: Mostrar resultados
+        if (cantidadNegativos == 0)
+        {
+            Console.WriteLine("\nNo se ingresó ningún número negativo.");
+        }
+        else
+        {
+            Console.WriteLine($"\nNúmeros negativos encontrados ({cantidadNegativos}):");
+            for (int i = 0; i < cantidadNegativos; i++)
+            {
+                Console.WriteLine($"  negativos[{i+1}] = {negativos[i]}");
+            }
+            Console.WriteLine($"\nSuma acumulada de los negativos: {sumaNegativos}");
+        }
     }
 }
