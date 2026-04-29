@@ -1,0 +1,35 @@
+// ============================================================
+// EJERCICIO 19
+// Leer 10 números y mostrar la suma acumulada en cada paso
+// ============================================================
+
+using System;
+
+class Ejercicio19
+{
+    static void Main()
+    {
+        // La suma acumulada va creciendo con cada número que leemos
+        double sumaAcumulada = 0;
+        double numero;
+
+        Console.WriteLine("=== Suma acumulada paso a paso ===");
+
+        for (int i = 1; i <= 10; i++)
+        {
+            Console.Write($"Ingresa el número {i}: ");
+            while (!double.TryParse(Console.ReadLine(), out numero))
+            {
+                Console.Write("Dato inválido. Ingresa un número: ");
+            }
+
+            // Agregamos el número a la suma acumulada
+            sumaAcumulada += numero;
+
+            // Mostramos cómo va la suma en este momento
+            Console.WriteLine($"   Suma acumulada hasta ahora: {sumaAcumulada}");
+        }
+
+        Console.WriteLine($"\nSuma total final: {sumaAcumulada}");
+    }
+}
