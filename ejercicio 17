@@ -1,0 +1,35 @@
+// ============================================================
+        // EJERCICIO 17
+        // Leer 10 datos y mostrar cuántos están en rango 0–100
+        // ============================================================
+
+using System;
+
+class Ejercicio17
+{
+    static void Main()
+    {
+        // Contador para los números que caen entre 0 y 100
+        int contador = 0;
+        double numero;
+
+        Console.WriteLine("=== Números en rango 0 a 100 ===");
+
+        for (int i = 1; i <= 10; i++)
+        {
+            Console.Write($"Ingresa el número {i}: ");
+            while (!double.TryParse(Console.ReadLine(), out numero))
+            {
+                Console.Write("Dato inválido. Ingresa un número: ");
+            }
+
+            // Verificamos si el número está dentro del rango (inclusive)
+            if (numero >= 0 && numero <= 100)
+            {
+                contador++;
+            }
+        }
+
+        Console.WriteLine($"\nCantidad de números en rango 0-100: {contador}");
+    }
+}
