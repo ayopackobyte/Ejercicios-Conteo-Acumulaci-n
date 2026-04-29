@@ -1,0 +1,38 @@
+// ============================================================
+// EJERCICIO 16
+// Leer 10 valores y acumular solo los negativos
+// ============================================================
+
+using System;
+
+class Ejercicio16
+{
+    static void Main()
+    {
+        // Variable para acumular la suma de los números negativos
+        double sumaNegativos = 0;
+        double numero;
+
+        Console.WriteLine("=== Suma de números negativos ===");
+
+        // Leemos 10 números uno por uno
+        for (int i = 1; i <= 10; i++)
+        {
+            // Pedimos el número y lo validamos
+            Console.Write($"Ingresa el número {i}: ");
+            while (!double.TryParse(Console.ReadLine(), out numero))
+            {
+                Console.Write("Dato inválido. Ingresa un número: ");
+            }
+
+            // Si el número es negativo, lo sumamos al acumulador
+            if (numero < 0)
+            {
+                sumaNegativos += numero;
+            }
+        }
+
+        // Mostramos el resultado
+        Console.WriteLine($"\nLa suma de los números negativos es: {sumaNegativos}");
+    }
+}
