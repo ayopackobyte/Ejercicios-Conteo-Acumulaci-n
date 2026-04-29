@@ -1,0 +1,36 @@
+// EJERCICIO 20
+// Leer 10 valores y mostrar el promedio acumulado progresivo
+// ============================================================
+
+using System;
+
+class Ejercicio20
+{
+    static void Main()
+    {
+        double sumaAcumulada = 0;
+        double numero;
+
+        Console.WriteLine("=== Promedio acumulado progresivo ===");
+
+        for (int i = 1; i <= 10; i++)
+        {
+            Console.Write($"Ingresa el número {i}: ");
+            while (!double.TryParse(Console.ReadLine(), out numero))
+            {
+                Console.Write("Dato inválido. Ingresa un número: ");
+            }
+
+            // Sumamos el número al acumulador
+            sumaAcumulada += numero;
+
+            // El promedio hasta este momento = suma acumulada / cantidad de números leídos hasta ahora
+            double promedioActual = sumaAcumulada / i;
+
+            // Mostramos el promedio después de cada número
+            Console.WriteLine($"  → Promedio con {i} número(s): {promedioActual:F2}");
+        }
+
+        Console.WriteLine($"\nPromedio final: {sumaAcumulada / 10:F2}");
+    }
+}
